@@ -5,18 +5,19 @@
 import math
 from gimpfu import *
 
-def python_desaturate(img,drawable,blur_rad,opacity):
+def python_color_enhance(img,drawable,blur_rad,opacity):
     
 
     layer = img.active_layer
+    
     #duplicate the layer twice
     layer2 = pdb.gimp_layer_copy(layer,FALSE)
-    pdb.gimp_image_add_layer(img,layer2,0)  #need to add to image. add is decpricated but cant get insert to work...group 0 doesnt work
+    pdb.gimp_image_add_layer(img,layer2,0)  #need to add to image. 
     layer3 = pdb.gimp_layer_copy(layer,FALSE)
     pdb.gimp_image_add_layer(img,layer3,0)
     pdb.gimp_image_set_active_layer(img,layer3)
     #top layer desaturate luminosity
-    pdb.gimp_desaturate_full(layer3,1)  #type 1 is luminosity, maybe make adjustable
+    pdb.gimp_desaturate_full(layer3,1)  #type 1 is luminosity
     #invert
     pdb.gimp_invert(layer3)
     #gaussian blur. Using iir instead of rle (better for non-CG images)
@@ -50,6 +51,6 @@ register(
 #                (PF_INT, "depth", "Depth", 3)
         ],
         [],
-        python_desaturate)
+        python_color_enhance)
 
 main()
