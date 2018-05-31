@@ -11,8 +11,8 @@ Python script to enhance colors in images.  It consists of the following steps:
   4. Gaussian blur - user defined radius (default = 20)
   5. Reduce top layer opacity - user defined, default = 30%
   6. Merge down.
-  7. Set top layer to 50% opacity
-  
+  7. Layer blend mode set to "Grain Merge"
+  8. Set top layer to 50% opacity
 
 The final merge down in not performed to allow for a final opacity tweak to the upper layer before merging down.
 
